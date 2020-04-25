@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "http://192.168.1.9:4000/"; 
+const URL = "http://localhost:4000/"; //android use ip  
 
 
 const instance = axios.create({
