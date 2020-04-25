@@ -6,7 +6,7 @@ import {
   Text,
   FlatList,
   StyleSheet,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -43,7 +43,7 @@ export default class Posts extends React.Component {
     this.setState({ posts: newData });
   };
 
-  _renderItem = ({ item }) => {
+  renderItem = ({ item }) => {
     return (
       <ListItem
         onPress={() =>
@@ -121,21 +121,21 @@ export default class Posts extends React.Component {
     Api.instance
       .get('posts')
       .then((resp) => {
-          //TODO, need return state code
-          resp.data.sort(function (first, next) {
-            return first.publishedAt < next.publishedAt ? 1 : -1;
-          });
-          this.setState({
-            posts: resp.data,
-            loading: false,
-            refreshing: false,
-            data: resp.data,
-          });
+        //TODO, need return state code
+        resp.data.sort(function (first, next) {
+          return first.publishedAt < next.publishedAt ? 1 : -1;
+        });
+        this.setState({
+          posts: resp.data,
+          loading: false,
+          refreshing: false,
+          data: resp.data,
+        });
       })
       .catch((error) => {
-        // TODO network error 
+        // TODO network error
         console.log(error);
-        this.setState({loading: false})
+        this.setState({ loading: false });
       });
   };
 
@@ -159,7 +159,7 @@ export default class Posts extends React.Component {
             <FlatList
               data={this.state.posts}
               showsVerticalScrollIndicator={true}
-              renderItem={this._renderItem}
+              renderItem={this.renderItem}
               keyExtractor={(item, index) => index.toString()}
               ListFooterComponent={this.renderFooter}
               ItemSeparatorComponent={this.renderSeparator}

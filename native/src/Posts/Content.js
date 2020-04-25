@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 export default class Content extends Component {
-  static navigationOptions = ({navigation}) => ({
+  static navigationOptions = ({ navigation }) => ({
     title: `${navigation.getParam('title')}`,
-    headerTitleStyle: {textAlign: 'center', alignSelf: 'center'},
+    headerTitleStyle: { textAlign: 'center', alignSelf: 'center' },
     headerStyle: {
-        backgroundColor: 'white',
+      backgroundColor: 'white',
     },
-});
+  });
 
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ export default class Content extends Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.content}>
-            <Markdown>{this.props.navigation.getParam('body')}</Markdown>
+          <Markdown>{this.props.navigation.getParam('body')}</Markdown>
         </View>
       </ScrollView>
     );
