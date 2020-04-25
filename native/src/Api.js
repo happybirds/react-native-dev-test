@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "http://localhost:4000/"; 
+const URL = "http://192.168.1.9:4000/"; 
 
 
 const instance = axios.create({
